@@ -595,7 +595,7 @@ LRESULT CALLBACK OverlayProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
             }
 
             y += 10;
-            graphics.DrawString(L"Drag to move • Press hotkey to refresh", -1, &smallFont,
+            graphics.DrawString(L"Drag to move Â• Press hotkey to refresh", -1, &smallFont,
                 PointF((REAL)x, (REAL)y), &lightGrayBrush);
         }
 
@@ -790,15 +790,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
         y += 85;
 
         // Instructions or results
-        if (nearestTreasures.empty()) {
+                if (nearestTreasures.empty()) {
             std::wstringstream instrText;
             instrText << L"Instructions:\n"
-                << L"1. Go to Minecraft Bedrock Edition\n"
-                << L"2. Show coordinates (F3 on PC)\n"
-                << L"3. Press " << GetKeyName(currentHotkey) << L" to find nearest buried treasures\n"
-                << L"4. Press " << GetKeyName(overlayToggleHotkey) << L" to toggle overlay visibility\n"
-                << L"5. Results will be copied to clipboard automatically\n"
-                << L"6. Overlay shows treasure locations (drag to move)";
+                << L"1. Press " << GetKeyName(currentHotkey) << L" to find nearest buried treasures\n"
+                << L"2. Press " << GetKeyName(overlayToggleHotkey) << L" to toggle overlay visibility\n"
+                << L"3. Results will be copied to clipboard automatically\n"
+                << L"4. Overlay shows treasure locations (drag to move)";
             graphics.DrawString(instrText.str().c_str(), -1, &font,
                 PointF((REAL)marginX, (REAL)y), &whiteBrush);
         }
@@ -944,4 +942,5 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // Cleanup
     GdiplusShutdown(gdiplusToken);
     return (int)msg.wParam;
+
 }
